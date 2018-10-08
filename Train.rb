@@ -22,29 +22,62 @@ class Train
     @train_speed = 0
   end
 
+  # Увеличиваем скорость
   def increase_speed(speed)
     @train_speed += speed
   end
 
+  # Сбрасывает скорость до 0
   def stop_train
     @train_speed = 0
   end
 
   # отцепить вагон
   def unhook_carriage
-    if @number_of_carriages - 1 < 0
-      raise "The number of carriages can not be less than 0"
-    end
+    raise "The number of carriages can not be less than 0" if (@number_of_carriages - 1 < 0) || (@train_speed != 0)
     @number_of_carriages -= 1
   end
 
   # Прицепить вагон
   def hook_carriage
+    raise "The train is moving" if @train_speed != 0
     @number_of_carriages += 1
   end
 
-attr_writer :route
+  # Сеттер для маршрута и автоматически устанавливает поезд на первую станцию маршрута
+  def route=(route)
+    @route = route
+    @current_station = 0
+  end
 
+  # Перемещаем поезд вперед по иаршруту
+  def move_train_forward
+    raise "We are already at the final station" if @current_station == @route.station_list.size - 1
+    @current_station += 1
+  end
+
+  # Перемещаем поезд по маршруту назад
+  def move_train_backward
+    raise "We are already at the first station" if @current_station == 0
+    @current_station -= 1
+  end
+
+  # Выводим информацию по маршруту
+  def train_route_info
+    if @current_station == 0
+      puts "previous station: no previous station"
+    else
+      puts "previous station: #{@route.station_list[@current_station - 1]}"
+    end
+
+    puts "current_station: #{@route.station_list[@current_station]}"
+
+    if @current_station == @route.station_list.size - 1
+      puts "next station: no next station"
+    else
+      puts "next station: #{@route.station_list[@current_station + 1]}"
+    end
+  end
 end
 
 my_train = Train.new("i76fu5d", "passenger", 5)

@@ -36,7 +36,7 @@ class Route
   end
 end
 
-#route = Route.new("Koptevo", "Bot Sad", ["Hovrino", "Sokol"])
+#route = ]Route.new("Koptevo", "Bot Sad", ["Hovrino", "Sokol")
 #route.display_route
 #route.add_intermediate_station("Dinamo")
 #route.display_route
