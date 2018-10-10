@@ -12,8 +12,10 @@
 # на 1 станцию за раз.
 # Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
 
+load 'Route.rb'
+
 class Train
-  attr_reader :number_of_carriages, :train_speed
+  attr_reader :number_of_carriages, :train_speed, :train_type, :train_number
 
   def initialize(train_number, train_type, number_of_carriages)
     @train_number = train_number
@@ -34,7 +36,8 @@ class Train
 
   # отцепить вагон
   def unhook_carriage
-    raise "The number of carriages can not be less than 0" if (@number_of_carriages - 1 < 0) || (@train_speed != 0)
+    raise "The number of carriages can not be less than 0" if (@number_of_carriages - 1 < 0)
+    raise "The train is moving" if (@train_speed != 0)
     @number_of_carriages -= 1
   end
 
@@ -80,4 +83,23 @@ class Train
   end
 end
 
-my_train = Train.new("i76fu5d", "passenger", 5)
+#my_train = Train.new("i76fu5d", "passenger", 5)
+#my_train.increase_speed(7)
+#puts my_train.train_speed
+#my_train.stop_train
+#puts my_train.train_speed
+#my_train.unhook_carriage
+#puts my_train.number_of_carriages
+#my_train.hook_carriage
+#puts my_train.number_of_carriages
+
+#my_route = Route.new("initial_station", "final_station")
+#my_route.add_intermediate_station("123")
+#my_route.add_intermediate_station("456")
+
+#my_train.route = my_route
+#my_train.train_route_info
+#my_train.move_train_forward
+#my_train.train_route_info
+#my_train.move_train_forward
+#my_train.train_route_info

@@ -31,12 +31,16 @@ class Route
 
   # Возвращает массив со всеми станциями маршрута
   def station_list
-    stations = [@initial_station, @intermediate_stations, @final_station]
+    stations = [].push(@initial_station)
+    for element in @intermediate_stations do
+      stations.push(element)
+    end
+    stations.push(@final_station)
     return stations
   end
 end
 
-#route = ]Route.new("Koptevo", "Bot Sad", ["Hovrino", "Sokol")
+#route = Route.new("Koptevo", "Bot Sad", ["Hovrino", "Sokol")
 #route.display_route
 #route.add_intermediate_station("Dinamo")
 #route.display_route
