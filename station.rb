@@ -4,8 +4,6 @@
 # Может возвращать список поездов на станции по типу (см. ниже): кол-во грузовых, пассажирских
 # Может отправлять поезда (по одному за раз, при этом, поезд удаляется из списка поездов, находящихся на станции).
 
-load 'Train.rb'
-
 class Station
   attr_reader :list_of_trains
 
@@ -22,10 +20,8 @@ class Station
   # ВЫвести список поездов по типу: кол-во пассажирских  и записать кол-во грузовых
   def list_of_trains_by_type()
     number_of_passenger_trains = 0
-    for train in @list_of_trains do
-      if train.train_type == "passenger"
-        number_of_passenger_trains += 1
-      end
+    @list_of_trains.each do |train|
+      number_of_passenger_trains += 1 if train.train_type == "passenger"
     end
     puts "Number of passenger trains: #{number_of_passenger_trains}"
     puts "Number of cargo trains: #{@list_of_trains.size - number_of_passenger_trains}"

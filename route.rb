@@ -32,11 +32,11 @@ class Route
   # Возвращает массив со всеми станциями маршрута
   def station_list
     stations = [].push(@initial_station)
-    for element in @intermediate_stations do
+    @intermediate_stations.each do |element|
       stations.push(element)
     end
     stations.push(@final_station)
-    return stations
+    stations
   end
 end
 

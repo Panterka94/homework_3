@@ -12,8 +12,6 @@
 # на 1 станцию за раз.
 # Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
 
-load 'Route.rb'
-
 class Train
   attr_reader :number_of_carriages, :train_speed, :train_type, :train_number
 
