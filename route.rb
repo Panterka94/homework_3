@@ -29,14 +29,9 @@ class Route
     puts @final_station
   end
 
-  # Возвращает массив со всеми станциями маршрута
+  # Возвращает (return) массив со всеми станциями маршрута
   def station_list
-    stations = [].push(@initial_station)
-    @intermediate_stations.each do |element|
-      stations.push(element)
-    end
-    stations.push(@final_station)
-    stations
+    [@initial_station, @intermediate_stations, @final_station].flatten
   end
 end
 
