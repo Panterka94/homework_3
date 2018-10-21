@@ -15,6 +15,7 @@
 class Train
   attr_reader :number_of_carriages, :train_speed, :train_type, :train_number
 
+
   def initialize(train_number, train_type, number_of_carriages)
     @train_number = train_number
     @train_type = train_type
